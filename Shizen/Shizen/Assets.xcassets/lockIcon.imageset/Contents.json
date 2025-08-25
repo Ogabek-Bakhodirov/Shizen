@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "padlock-square-1--combination-combo-lock-locked-padlock-secure-security-shield-keyhole.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "padlock-square-1--combination-combo-lock-locked-padlock-secure-security-shield-keyhole@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "padlock-square-1--combination-combo-lock-locked-padlock-secure-security-shield-keyhole@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
