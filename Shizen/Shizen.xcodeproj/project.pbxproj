@@ -47,7 +47,6 @@
 		80DBD6732CF8877D00F988A7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6722CF8877D00F988A7 /* ChatView.swift */; };
 		80DBD6772CF8E52D00F988A7 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6762CF8E52D00F988A7 /* OpenAIService.swift */; };
 		80DBD6792CF9BA0600F988A7 /* HuggingFaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6782CF9BA0600F988A7 /* HuggingFaceService.swift */; };
-		80DBD67B2CF9BA2700F988A7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD67A2CF9BA2700F988A7 /* GlobalVariables.swift */; };
 		80DBD67D2CF9D2C400F988A7 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD67C2CF9D2C400F988A7 /* GlobalFunctions.swift */; };
 		80DBD6832CF9F8CB00F988A7 /* OverveiwTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6822CF9F8CB00F988A7 /* OverveiwTopCell.swift */; };
 		80DBD6852CF9FDAE00F988A7 /* SetUpTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6842CF9FDAE00F988A7 /* SetUpTutorialCell.swift */; };
@@ -57,6 +56,7 @@
 		80DBD6902CFB37D100F988A7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD68F2CFB37D100F988A7 /* UserModel.swift */; };
 		80FF98EE2E5D17E200B4087D /* PomodoroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FF98ED2E5D17DD00B4087D /* PomodoroViewController.swift */; };
 		80FF98F02E5D19FF00B4087D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FF98EF2E5D19FC00B4087D /* Network.swift */; };
+		80FF98F22E5D2D4E00B4087D /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FF98F12E5D2D4800B4087D /* GlobalVariable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,7 +116,6 @@
 		80DBD6722CF8877D00F988A7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		80DBD6762CF8E52D00F988A7 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		80DBD6782CF9BA0600F988A7 /* HuggingFaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuggingFaceService.swift; sourceTree = "<group>"; };
-		80DBD67A2CF9BA2700F988A7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		80DBD67C2CF9D2C400F988A7 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		80DBD6822CF9F8CB00F988A7 /* OverveiwTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverveiwTopCell.swift; sourceTree = "<group>"; };
 		80DBD6842CF9FDAE00F988A7 /* SetUpTutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpTutorialCell.swift; sourceTree = "<group>"; };
@@ -126,6 +125,7 @@
 		80DBD68F2CFB37D100F988A7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		80FF98ED2E5D17DD00B4087D /* PomodoroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewController.swift; sourceTree = "<group>"; };
 		80FF98EF2E5D19FC00B4087D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		80FF98F12E5D2D4800B4087D /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,11 +236,11 @@
 		80DBD66D2CF7ADFC00F988A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80FF98F12E5D2D4800B4087D /* GlobalVariable.swift */,
 				80FF98EF2E5D19FC00B4087D /* Network.swift */,
 				80BB32022D86AEC5005EFB07 /* AwardBase.swift */,
 				80BB32002D861B65005EFB07 /* AwardManager.swift */,
 				80BB31FA2D84A1A6005EFB07 /* UserSettings.swift */,
-				80DBD67A2CF9BA2700F988A7 /* GlobalVariables.swift */,
 				80DBD67C2CF9D2C400F988A7 /* GlobalFunctions.swift */,
 				80DBD68F2CFB37D100F988A7 /* UserModel.swift */,
 			);
@@ -364,7 +364,6 @@
 				80BB31FB2D84A1AD005EFB07 /* UserSettings.swift in Sources */,
 				804AB7B72D7DA1E400C32B1A /* EditInfoViewController.swift in Sources */,
 				80DBD6792CF9BA0600F988A7 /* HuggingFaceService.swift in Sources */,
-				80DBD67B2CF9BA2700F988A7 /* GlobalVariables.swift in Sources */,
 				804AB7A52D79E92E00C32B1A /* UIColorExtensions.swift in Sources */,
 				804AB7B92D7DA30400C32B1A /* USERDATA.swift in Sources */,
 				80DBD6772CF8E52D00F988A7 /* OpenAIService.swift in Sources */,
@@ -372,6 +371,7 @@
 				804AB7B52D7C7E4400C32B1A /* LeaderBoardTableViewCell.swift in Sources */,
 				804AB7642D4B6DA800C32B1A /* RegistrationViewController.swift in Sources */,
 				80DBD6732CF8877D00F988A7 /* ChatView.swift in Sources */,
+				80FF98F22E5D2D4E00B4087D /* GlobalVariable.swift in Sources */,
 				804AB7A32D79E4AC00C32B1A /* UIImageExtensions.swift in Sources */,
 				80A4D5732E5D0AD5001B79B1 /* ActivityDayView.swift in Sources */,
 				804AB7AB2D7BA06900C32B1A /* AwardDescriptionViewController.swift in Sources */,
