@@ -30,8 +30,8 @@
 		804AB7B32D7C772600C32B1A /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B22D7C771F00C32B1A /* LeaderBoardViewController.swift */; };
 		804AB7B52D7C7E4400C32B1A /* LeaderBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B42D7C7E3A00C32B1A /* LeaderBoardTableViewCell.swift */; };
 		804AB7B72D7DA1E400C32B1A /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B62D7DA1D700C32B1A /* EditInfoViewController.swift */; };
-		804AB7B92D7DA30400C32B1A /* USERDATA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B82D7DA2FE00C32B1A /* USERDATA.swift */; };
 		807A31CA2D46DB6C0027EDD0 /* Shieldview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807A31C92D46DB680027EDD0 /* Shieldview.swift */; };
+		80A357DC2E5D9E8B00C97453 /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A357DB2E5D9E6A00C97453 /* FocusSession.swift */; };
 		80A4D5732E5D0AD5001B79B1 /* ActivityDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A4D5722E5D0AC9001B79B1 /* ActivityDayView.swift */; };
 		80BB31F72D80A5F7005EFB07 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB31F62D80A5E6005EFB07 /* HelpViewController.swift */; };
 		80BB31F92D831A68005EFB07 /* NotReadyScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB31F82D831A5D005EFB07 /* NotReadyScreenViewController.swift */; };
@@ -43,10 +43,7 @@
 		80DBD6592CF78DA600F988A7 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6582CF78DA600F988A7 /* OverviewViewController.swift */; };
 		80DBD65E2CF78DA700F988A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80DBD65D2CF78DA700F988A7 /* Assets.xcassets */; };
 		80DBD6612CF78DA700F988A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80DBD65F2CF78DA700F988A7 /* LaunchScreen.storyboard */; };
-		80DBD6712CF7B5A600F988A7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6702CF7B5A600F988A7 /* ChatViewController.swift */; };
 		80DBD6732CF8877D00F988A7 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6722CF8877D00F988A7 /* ChatView.swift */; };
-		80DBD6772CF8E52D00F988A7 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6762CF8E52D00F988A7 /* OpenAIService.swift */; };
-		80DBD6792CF9BA0600F988A7 /* HuggingFaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6782CF9BA0600F988A7 /* HuggingFaceService.swift */; };
 		80DBD67D2CF9D2C400F988A7 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD67C2CF9D2C400F988A7 /* GlobalFunctions.swift */; };
 		80DBD6832CF9F8CB00F988A7 /* OverveiwTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6822CF9F8CB00F988A7 /* OverveiwTopCell.swift */; };
 		80DBD6852CF9FDAE00F988A7 /* SetUpTutorialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6842CF9FDAE00F988A7 /* SetUpTutorialCell.swift */; };
@@ -96,8 +93,8 @@
 		804AB7B22D7C771F00C32B1A /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		804AB7B42D7C7E3A00C32B1A /* LeaderBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewCell.swift; sourceTree = "<group>"; };
 		804AB7B62D7DA1D700C32B1A /* EditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
-		804AB7B82D7DA2FE00C32B1A /* USERDATA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USERDATA.swift; sourceTree = "<group>"; };
 		807A31C92D46DB680027EDD0 /* Shieldview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shieldview.swift; sourceTree = "<group>"; };
+		80A357DB2E5D9E6A00C97453 /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSession.swift; sourceTree = "<group>"; };
 		80A4D5712E5D057C001B79B1 /* Shizen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shizen.entitlements; sourceTree = "<group>"; };
 		80A4D5722E5D0AC9001B79B1 /* ActivityDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDayView.swift; sourceTree = "<group>"; };
 		80BB31F62D80A5E6005EFB07 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
@@ -112,10 +109,7 @@
 		80DBD65D2CF78DA700F988A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80DBD6602CF78DA700F988A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80DBD6622CF78DA700F988A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80DBD6702CF7B5A600F988A7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		80DBD6722CF8877D00F988A7 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		80DBD6762CF8E52D00F988A7 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
-		80DBD6782CF9BA0600F988A7 /* HuggingFaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuggingFaceService.swift; sourceTree = "<group>"; };
 		80DBD67C2CF9D2C400F988A7 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		80DBD6822CF9F8CB00F988A7 /* OverveiwTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverveiwTopCell.swift; sourceTree = "<group>"; };
 		80DBD6842CF9FDAE00F988A7 /* SetUpTutorialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpTutorialCell.swift; sourceTree = "<group>"; };
@@ -198,9 +192,6 @@
 		80DBD66B2CF7ADDE00F988A7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				804AB7B82D7DA2FE00C32B1A /* USERDATA.swift */,
-				80DBD6762CF8E52D00F988A7 /* OpenAIService.swift */,
-				80DBD6782CF9BA0600F988A7 /* HuggingFaceService.swift */,
 				80DBD6542CF78DA600F988A7 /* AppDelegate.swift */,
 			);
 			path = Controller;
@@ -225,7 +216,6 @@
 				804AB7652D4B6E7F00C32B1A /* LoginViewController.swift */,
 				804AB7632D4B6DA100C32B1A /* RegistrationViewController.swift */,
 				80DBD6582CF78DA600F988A7 /* OverviewViewController.swift */,
-				80DBD6702CF7B5A600F988A7 /* ChatViewController.swift */,
 				80DBD66A2CF7ADD600F988A7 /* Views */,
 				80DBD6812CF9F65100F988A7 /* Cells */,
 				80DBD6862CFA3FCF00F988A7 /* CustomViews */,
@@ -243,6 +233,7 @@
 				80BB31FA2D84A1A6005EFB07 /* UserSettings.swift */,
 				80DBD67C2CF9D2C400F988A7 /* GlobalFunctions.swift */,
 				80DBD68F2CFB37D100F988A7 /* UserModel.swift */,
+				80A357DB2E5D9E6A00C97453 /* FocusSession.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,16 +348,12 @@
 				80DBD68A2CFA7FB900F988A7 /* UserMessageCell.swift in Sources */,
 				80FF98EE2E5D17E200B4087D /* PomodoroViewController.swift in Sources */,
 				804AB77C2D51430100C32B1A /* TabbarViewController.swift in Sources */,
-				80DBD6712CF7B5A600F988A7 /* ChatViewController.swift in Sources */,
 				80BB31F92D831A68005EFB07 /* NotReadyScreenViewController.swift in Sources */,
 				804AB7A12D6B100900C32B1A /* QuizViewDel.swift in Sources */,
 				80DBD6852CF9FDAE00F988A7 /* SetUpTutorialCell.swift in Sources */,
 				80BB31FB2D84A1AD005EFB07 /* UserSettings.swift in Sources */,
 				804AB7B72D7DA1E400C32B1A /* EditInfoViewController.swift in Sources */,
-				80DBD6792CF9BA0600F988A7 /* HuggingFaceService.swift in Sources */,
 				804AB7A52D79E92E00C32B1A /* UIColorExtensions.swift in Sources */,
-				804AB7B92D7DA30400C32B1A /* USERDATA.swift in Sources */,
-				80DBD6772CF8E52D00F988A7 /* OpenAIService.swift in Sources */,
 				80DBD68C2CFA7FC900F988A7 /* AIMessageCell.swift in Sources */,
 				804AB7B52D7C7E4400C32B1A /* LeaderBoardTableViewCell.swift in Sources */,
 				804AB7642D4B6DA800C32B1A /* RegistrationViewController.swift in Sources */,
@@ -387,6 +374,7 @@
 				804AB7AD2D7BA1F900C32B1A /* UIViewControllerExtensions.swift in Sources */,
 				804AB76E2D5017E200C32B1A /* LoginView.swift in Sources */,
 				804AB75D2D49951400C32B1A /* UILabelExtensions.swift in Sources */,
+				80A357DC2E5D9E8B00C97453 /* FocusSession.swift in Sources */,
 				807A31CA2D46DB6C0027EDD0 /* Shieldview.swift in Sources */,
 				80DBD6882CFA3FEE00F988A7 /* CustomTextField.swift in Sources */,
 				804AB7722D50339E00C32B1A /* RegistrationView.swift in Sources */,

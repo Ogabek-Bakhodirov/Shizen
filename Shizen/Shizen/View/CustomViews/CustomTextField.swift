@@ -92,7 +92,7 @@ class CustomTextField: UIView{
     
     @objc func buttonTapped(){
         if textFieldView.text != "" {
-            UserModel.shared.addMessage(id: "1", sender: .user, content: (textFieldView.text ?? ""), messageType: .text)
+//            UserModel.shared.addMessage(id: "1", sender: .user, content: (textFieldView.text ?? ""), messageType: .text)
             sentMessage?(UserModel.shared)
             textFieldView.text = ""
         }

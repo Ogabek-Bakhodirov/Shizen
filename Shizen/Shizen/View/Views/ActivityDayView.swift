@@ -1,3 +1,205 @@
+//import UIKit
+//
+//// MARK: - Cell
+//
+//final class ActivityDayCell: UICollectionViewCell {
+//    static let reuseID = "ActivityDayCell"
+//
+//    private let label = UILabel()
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        contentView.layer.cornerRadius = 6
+//        contentView.layer.masksToBounds = true
+//
+//        label.font = .systemFont(ofSize: 12, weight: .semibold)
+//        label.textAlignment = .center
+//        label.textColor = .white
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//
+//        contentView.addSubview(label)
+//        NSLayoutConstraint.activate([
+//            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
+//            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2),
+//            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
+//            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2)
+//        ])
+//    }
+//
+//    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+//
+//    func configure(dayNumber: Int?, inMonth: Bool, active: Bool,
+//                   activeColor: UIColor, inactiveColor: UIColor, outColor: UIColor) {
+//        if let day = dayNumber, inMonth {
+//            label.text = "\(day)"
+//            contentView.backgroundColor = active ? activeColor : inactiveColor
+//            label.textColor = .white
+//            isAccessibilityElement = true
+//            accessibilityLabel = "Day \(day)"
+//            accessibilityValue = active ? "Active" : "Inactive"
+//        } else {
+//            label.text = ""
+//            contentView.backgroundColor = outColor
+//            isAccessibilityElement = false
+//        }
+//    }
+//}
+//
+//// MARK: - View
+//
+//final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    // Public API
+//    var month: Date = Date() { didSet { rebuildGrid() } }
+//    /// 1-based days in month that were active
+//    var activeDays: Set<Int> = [] { didSet { collection.reloadData() } }
+//
+//    var activeColor: UIColor = .systemGreen { didSet { collection.reloadData() } }
+//    var inactiveColor: UIColor = .systemRed { didSet { collection.reloadData() } }
+//    var outOfMonthColor: UIColor = UIColor.systemGray5 { didSet { collection.reloadData() } }
+//    var itemSpacing: CGFloat = 6 { didSet { flow.minimumInteritemSpacing = itemSpacing; flow.minimumLineSpacing = itemSpacing; collection.collectionViewLayout.invalidateLayout() } }
+//    var cornerRadius: CGFloat = 6 { didSet { collection.visibleCells.forEach { $0.contentView.layer.cornerRadius = cornerRadius } } }
+//
+//    // Internals
+//    private let calendar: Calendar = {
+//        var cal = Calendar.current
+//        // Uncomment next line to force Monday as first weekday regardless of locale:
+//        // cal.firstWeekday = 2
+//        return cal
+//    }()
+//    private var daysInMonth = 30
+//    private var leadingBlanks = 0
+//    private var totalCells = 0
+//
+//    private let header = UIStackView()
+//    private let collection: UICollectionView
+//    private let flow = UICollectionViewFlowLayout()
+//
+//    override init(frame: CGRect) {
+//        collection = UICollectionView(frame: .zero, collectionViewLayout: flow)
+//        super.init(frame: frame)
+//        setup()
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        collection = UICollectionView(frame: .zero, collectionViewLayout: flow)
+//        super.init(coder: coder)
+//        setup()
+//    }
+//
+//    private func setup() {
+//        translatesAutoresizingMaskIntoConstraints = false
+//
+//        // Header: weekday symbols
+//        header.axis = .horizontal
+//        header.alignment = .fill
+//        header.distribution = .fillEqually
+//        header.spacing = 4
+//        header.translatesAutoresizingMaskIntoConstraints = false
+//        addSubview(header)
+//
+//        // Collection
+//        flow.minimumInteritemSpacing = itemSpacing
+//        flow.minimumLineSpacing = itemSpacing
+//
+//        collection.backgroundColor = .clear
+//        collection.translatesAutoresizingMaskIntoConstraints = false
+//        collection.dataSource = self
+//        collection.delegate = self
+//        collection.register(ActivityDayCell.self, forCellWithReuseIdentifier: ActivityDayCell.reuseID)
+//        addSubview(collection)
+//
+//        NSLayoutConstraint.activate([
+//            header.topAnchor.constraint(equalTo: topAnchor),
+//            header.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            header.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            header.heightAnchor.constraint(equalToConstant: 18),
+//
+//            collection.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 8),
+//            collection.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            collection.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            collection.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ])
+//
+//        buildHeader()
+//        rebuildGrid()
+//    }
+//
+//    private func buildHeader() {
+//        header.arrangedSubviews.forEach { $0.removeFromSuperview() }
+//        let symbols = rotatedWeekdaySymbols()
+//        for s in symbols {
+//            let lbl = UILabel()
+//            lbl.text = s
+//            lbl.font = .systemFont(ofSize: 11, weight: .medium)
+//            lbl.textAlignment = .center
+//            lbl.textColor = .secondaryLabel
+//            header.addArrangedSubview(lbl)
+//        }
+//    }
+//
+//    private func rotatedWeekdaySymbols() -> [String] {
+//        // shortWeekdaySymbols starts on Sunday for most locales; rotate to match calendar.firstWeekday
+//        let symbols = calendar.shortWeekdaySymbols // e.g. ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+//        let start = calendar.firstWeekday - 1 // make it 0-based
+//        return Array(symbols[start...] + symbols[..<start])
+//    }
+//
+//    private func rebuildGrid() {
+//        daysInMonth = calendar.range(of: .day, in: .month, for: month)?.count ?? 30
+//        let firstOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: month))!
+//        let weekdayOfFirst = calendar.component(.weekday, from: firstOfMonth) // 1..7 (Sun=1)
+//        // leading blanks relative to calendar.firstWeekday
+//        leadingBlanks = ((weekdayOfFirst - calendar.firstWeekday) + 7) % 7
+//        let filled = leadingBlanks + daysInMonth
+//        totalCells = Int(ceil(Double(filled) / 7.0)) * 7
+//        collection.reloadData()
+//    }
+//
+//    // MARK: - UICollectionViewDataSource
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        totalCells
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityDayCell.reuseID, for: indexPath) as! ActivityDayCell
+//
+//        let dayIndex = indexPath.item - leadingBlanks // 0-based within month
+//        if dayIndex >= 0 && dayIndex < daysInMonth {
+//            let dayNumber = dayIndex + 1
+//            let isActive = activeDays.contains(dayNumber)
+//            cell.configure(dayNumber: dayNumber,
+//                           inMonth: true,
+//                           active: isActive,
+//                           activeColor: activeColor,
+//                           inactiveColor: inactiveColor,
+//                           outColor: outOfMonthColor)
+//            cell.contentView.layer.cornerRadius = cornerRadius
+//        } else {
+//            cell.configure(dayNumber: nil,
+//                           inMonth: false,
+//                           active: false,
+//                           activeColor: activeColor,
+//                           inactiveColor: inactiveColor,
+//                           outColor: outOfMonthColor)
+//            cell.contentView.layer.cornerRadius = cornerRadius
+//        }
+//        return cell
+//    }
+//
+//    // MARK: - UICollectionViewDelegateFlowLayout
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cols: CGFloat = 7
+//        let totalSpacing = itemSpacing * (cols - 1)
+//        let w = collectionView.bounds.width
+//        let side = floor((w - totalSpacing) / cols)
+//        return CGSize(width: side, height: side) // perfect squares
+//    }
+//}
+//
+
 import UIKit
 
 // MARK: - Cell
@@ -28,47 +230,36 @@ final class ActivityDayCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    func configure(dayNumber: Int?, inMonth: Bool, active: Bool,
-                   activeColor: UIColor, inactiveColor: UIColor, outColor: UIColor) {
+    func configure(dayNumber: Int?, inMonth: Bool, color: UIColor, outColor: UIColor) {
         if let day = dayNumber, inMonth {
             label.text = "\(day)"
-            contentView.backgroundColor = active ? activeColor : inactiveColor
+            contentView.backgroundColor = color
             label.textColor = .white
-            isAccessibilityElement = true
-            accessibilityLabel = "Day \(day)"
-            accessibilityValue = active ? "Active" : "Inactive"
         } else {
             label.text = ""
             contentView.backgroundColor = outColor
-            isAccessibilityElement = false
         }
     }
 }
 
-// MARK: - View
+// MARK: - Calendar View
 
 final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    // Public API
+
     var month: Date = Date() { didSet { rebuildGrid() } }
-    /// 1-based days in month that were active
-    var activeDays: Set<Int> = [] { didSet { collection.reloadData() } }
 
-    var activeColor: UIColor = .systemGreen { didSet { collection.reloadData() } }
-    var inactiveColor: UIColor = .systemRed { didSet { collection.reloadData() } }
-    var outOfMonthColor: UIColor = UIColor.systemGray5 { didSet { collection.reloadData() } }
-    var itemSpacing: CGFloat = 6 { didSet { flow.minimumInteritemSpacing = itemSpacing; flow.minimumLineSpacing = itemSpacing; collection.collectionViewLayout.invalidateLayout() } }
-    var cornerRadius: CGFloat = 6 { didSet { collection.visibleCells.forEach { $0.contentView.layer.cornerRadius = cornerRadius } } }
+    var activeColor: UIColor = .systemGreen
+    var inactiveColor: UIColor = .systemRed
+    var outOfMonthColor: UIColor = UIColor.systemGray5
+    var itemSpacing: CGFloat = 6
+    var cornerRadius: CGFloat = 6
 
-    // Internals
-    private let calendar: Calendar = {
-        var cal = Calendar.current
-        // Uncomment next line to force Monday as first weekday regardless of locale:
-        // cal.firstWeekday = 2
-        return cal
-    }()
+    private var calendar: Calendar = Calendar.current
     private var daysInMonth = 30
     private var leadingBlanks = 0
     private var totalCells = 0
+
+    private var dayColors: [Int: UIColor] = [:] // 1-based day -> color
 
     private let header = UIStackView()
     private let collection: UICollectionView
@@ -89,7 +280,6 @@ final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollecti
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        // Header: weekday symbols
         header.axis = .horizontal
         header.alignment = .fill
         header.distribution = .fillEqually
@@ -97,7 +287,6 @@ final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollecti
         header.translatesAutoresizingMaskIntoConstraints = false
         addSubview(header)
 
-        // Collection
         flow.minimumInteritemSpacing = itemSpacing
         flow.minimumLineSpacing = itemSpacing
 
@@ -138,24 +327,20 @@ final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollecti
     }
 
     private func rotatedWeekdaySymbols() -> [String] {
-        // shortWeekdaySymbols starts on Sunday for most locales; rotate to match calendar.firstWeekday
-        let symbols = calendar.shortWeekdaySymbols // e.g. ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-        let start = calendar.firstWeekday - 1 // make it 0-based
+        let symbols = calendar.shortWeekdaySymbols
+        let start = calendar.firstWeekday - 1
         return Array(symbols[start...] + symbols[..<start])
     }
 
     private func rebuildGrid() {
         daysInMonth = calendar.range(of: .day, in: .month, for: month)?.count ?? 30
         let firstOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: month))!
-        let weekdayOfFirst = calendar.component(.weekday, from: firstOfMonth) // 1..7 (Sun=1)
-        // leading blanks relative to calendar.firstWeekday
+        let weekdayOfFirst = calendar.component(.weekday, from: firstOfMonth)
         leadingBlanks = ((weekdayOfFirst - calendar.firstWeekday) + 7) % 7
         let filled = leadingBlanks + daysInMonth
         totalCells = Int(ceil(Double(filled) / 7.0)) * 7
         collection.reloadData()
     }
-
-    // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         totalCells
@@ -163,31 +348,18 @@ final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollecti
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityDayCell.reuseID, for: indexPath) as! ActivityDayCell
-
-        let dayIndex = indexPath.item - leadingBlanks // 0-based within month
+        let dayIndex = indexPath.item - leadingBlanks
         if dayIndex >= 0 && dayIndex < daysInMonth {
             let dayNumber = dayIndex + 1
-            let isActive = activeDays.contains(dayNumber)
-            cell.configure(dayNumber: dayNumber,
-                           inMonth: true,
-                           active: isActive,
-                           activeColor: activeColor,
-                           inactiveColor: inactiveColor,
-                           outColor: outOfMonthColor)
+            let color = dayColors[dayNumber] ?? outOfMonthColor
+            cell.configure(dayNumber: dayNumber, inMonth: true, color: color, outColor: outOfMonthColor)
             cell.contentView.layer.cornerRadius = cornerRadius
         } else {
-            cell.configure(dayNumber: nil,
-                           inMonth: false,
-                           active: false,
-                           activeColor: activeColor,
-                           inactiveColor: inactiveColor,
-                           outColor: outOfMonthColor)
+            cell.configure(dayNumber: nil, inMonth: false, color: outOfMonthColor, outColor: outOfMonthColor)
             cell.contentView.layer.cornerRadius = cornerRadius
         }
         return cell
     }
-
-    // MARK: - UICollectionViewDelegateFlowLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -195,7 +367,22 @@ final class ActivityCalendarView: UIView, UICollectionViewDataSource, UICollecti
         let totalSpacing = itemSpacing * (cols - 1)
         let w = collectionView.bounds.width
         let side = floor((w - totalSpacing) / cols)
-        return CGSize(width: side, height: side) // perfect squares
+        return CGSize(width: side, height: side)
+    }
+
+    // MARK: - Traction History
+
+    func applyTractionHistory(_ history: [Date: Int]) {
+        dayColors.removeAll()
+        let comp = calendar.dateComponents([.year, .month], from: month)
+
+        for (date, value) in history {
+            let dc = calendar.dateComponents([.year, .month, .day], from: date)
+            if dc.year == comp.year, dc.month == comp.month, let day = dc.day {
+                dayColors[day] = (value > 0) ? activeColor : inactiveColor
+            }
+        }
+
+        collection.reloadData()
     }
 }
-

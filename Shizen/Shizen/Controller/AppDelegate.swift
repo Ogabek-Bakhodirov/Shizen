@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //MARK: - did Finish Launching With Options
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
                 
+        UserModel.shared.checkAndUpdateDailySessions()
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = OverviewViewController()

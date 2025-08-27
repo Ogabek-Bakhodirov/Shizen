@@ -28,12 +28,8 @@ class UserModel: Codable {
                                                                       age: 0,
                                                                       gender: .notSelected,
                                                                       country: "",
-                                                                      point: 0,
-                                                                      quizUsageTimeMinute: 1.0,
                                                                       preferences: [],
-                                                                      conversationHistory: [],
-                                                                      lastInteractionDate: Date(),
-                                                                      quizHistory: [])
+                                                                      focusSession: [FocusSession(id: UUID(), title: "Kunlik fokus rejimi", dailyScore: 0, totalScore: 0, tractionHistory: [Date():0])])
 
     private var userId: String
     private var name: String { didSet { saveToUserDefaults() } }
@@ -42,16 +38,11 @@ class UserModel: Codable {
     private var age: Int { didSet { saveToUserDefaults() } }
     private var gender: Gender { didSet { saveToUserDefaults() } }
     private var country: String { didSet { saveToUserDefaults() } }
-    private var point: Int { didSet { saveToUserDefaults() } }
-    private var quizUsageTimeMinute: Double { didSet { saveToUserDefaults() } }
-    private var quizHistory: [String] {didSet {saveToUserDefaults()}}
+    
+    var focusSession: [FocusSession] {didSet {saveToUserDefaults()} }
 
     // Foydalanuvchi qiziqishlari
     var preferences: [String] { didSet { saveToUserDefaults() } }
-    // Foydalanuvchi shaxsiy xabarlar tarixi
-    var conversationHistory: [Message] { didSet { saveToUserDefaults() } }
-    // Oxirgi suhbat qachon bo'lgan
-    private var lastInteractionDate: Date? { didSet { saveToUserDefaults() } }
 
     private init(userId: String,
                  name: String,
@@ -60,12 +51,8 @@ class UserModel: Codable {
                  age: Int,
                  gender: Gender,
                  country: String,
-                 point: Int,
-                 quizUsageTimeMinute: Double,
                  preferences: [String] = [],
-                 conversationHistory: [Message] = [],
-                 lastInteractionDate: Date?,
-                 quizHistory: [String] = [])
+                 focusSession: [FocusSession] = [])
     {
 
         self.userId = userId
@@ -75,12 +62,8 @@ class UserModel: Codable {
         self.age = age
         self.gender = gender
         self.country = country
-        self.point = point
-        self.quizUsageTimeMinute = quizUsageTimeMinute
         self.preferences = preferences
-        self.conversationHistory = conversationHistory
-        self.lastInteractionDate = lastInteractionDate
-        self.quizHistory = quizHistory
+        self.focusSession = focusSession
     }
 
     // MARK: - UserDefaults Storage
@@ -98,17 +81,9 @@ class UserModel: Codable {
         }
         return nil
     }
-    
-    //MARK: - Quiz history
-    func getQuizHistory() -> [String] { return self.quizHistory }
-    func updateQuizHistory(quiz: [String]) { self.quizHistory.append(contentsOf: quiz) }
-    
+      
     //MARK: - Get Full Name
     func getFullName() -> String { return self.name + " " + self.surname}
-    
-    //MARK: - Usage Time
-    func getQuizUsageTimeInMin() -> Double {return self.quizUsageTimeMinute}
-    func changeQuizUsageTime(time: Double) { self.quizUsageTimeMinute += (time / 60)}
 
     // MARK: - Name
     func changeName(name: String) { self.name = name }
@@ -134,43 +109,8 @@ class UserModel: Codable {
     func changeGender(gender: Gender) { self.gender = gender }
     func getGender() -> Gender { return self.gender }
 
-    // MARK: - Points
-    func addPoints() { self.point += 1 }
-    func getPoints() -> Int { return self.point }
-
     // MARK: - Preferences
     func addPreferences(newPreference: [String]) { preferences += newPreference }
-
-    // MARK: - Conversation History
-    func addMessage(id: String, sender: SenderType, content: String, messageType: MessageType) {
-        let newMessage = Message(id: id, sender: sender, content: content, timestamp: Date(), messageType: messageType)
-        conversationHistory.append(newMessage)
-
-        if sender == .user {
-            // Yangi xabarga asoslanib qiziqishlarni yangilash
-            let detectedPreferences = analyzeMessage(for: content)
-            if !detectedPreferences.isEmpty {
-                addPreferences(newPreference: detectedPreferences)
-            }
-        }
-
-        lastInteractionDate = Date()
-    }
-
-    // MARK: - Detect Preferences
-    func analyzeMessage(for message: String) -> [String] {
-        let keywords = ["math", "science", "technology", "art", "history"]
-        var detectedPreferences: [String] = []
-
-        for keyword in keywords {
-            if message.lowercased().contains(keyword) {
-                detectedPreferences.append(keyword)
-            }
-        }
-        return detectedPreferences
-    }
-    
-    //MARK: - PrintAll
     
     func printAll() {
         print("userId: " + userId,
@@ -180,30 +120,89 @@ class UserModel: Codable {
               "age: \(age)",
               "gender: \(gender)",
               "country: " + country,
-              "point: \(point)",
-              "quizUsageTimeMinute: \(quizUsageTimeMinute)",
               "preferences: \(preferences)",
-              "conversationHistory: \(conversationHistory)",
-              "lastInteractionDate: \(String(describing: lastInteractionDate))",
-              "quizHistory: \(quizHistory)")
+              "focusSession: \(focusSession)"
+              )
     }
 
     enum Gender: String, Codable { case male, female, notSelected }
 }
 
 
-// Suhbatdagi xabar modeli
-struct Message: Codable {
-    var id: String
-    var sender: SenderType
-    var content: String
-    var timestamp: Date
-    var messageType: MessageType
+extension UserModel {
+    /// Har kuni kechasi ishlatilishi kerak (masalan background fetch yoki app ochilganda)
+    func checkAndUpdateDailySessions() {
+        let today = Calendar.current.startOfDay(for: Date())
+
+        for i in 0..<focusSession.count {
+            let session = focusSession[i]
+            
+            if let lastDate = session.tractionHistory.keys.sorted().last {
+                let lastDay = Calendar.current.startOfDay(for: lastDate)
+                
+                if lastDay < today {
+                    if session.dailyScore > 0 {
+                        focusSession[i].totalScore += session.dailyScore
+                        focusSession[i].tractionHistory[today] = session.dailyScore
+                    } else {
+                        focusSession[i].tractionHistory[today] = 0
+                    }
+                    
+                    focusSession[i].dailyScore = 0
+                }
+            } else {
+                focusSession[i].tractionHistory[today] = session.dailyScore
+                focusSession[i].dailyScore = 0
+            }
+        }
+    }
 }
 
-enum SenderType: String, Codable { case user, ai}
 
-enum MessageType: String, Codable {case text, image, multipleChoice, other}
+//    // MARK: - Conversation History
+//    func addMessage(id: String, sender: SenderType, content: String, messageType: MessageType) {
+//        let newMessage = Message(id: id, sender: sender, content: content, timestamp: Date(), messageType: messageType)
+//
+//        if sender == .user {
+//            // Yangi xabarga asoslanib qiziqishlarni yangilash
+//            let detectedPreferences = analyzeMessage(for: content)
+//            if !detectedPreferences.isEmpty {
+//                addPreferences(newPreference: detectedPreferences)
+//            }
+//        }
+//
+//    }
+
+//    // MARK: - Detect Preferences
+//    func analyzeMessage(for message: String) -> [String] {
+//        let keywords = ["math", "science", "technology", "art", "history"]
+//        var detectedPreferences: [String] = []
+//
+//        for keyword in keywords {
+//            if message.lowercased().contains(keyword) {
+//                detectedPreferences.append(keyword)
+//            }
+//        }
+//        return detectedPreferences
+//    }
+    
+    //MARK: - PrintAll
+    
+
+
+
+// Suhbatdagi xabar modeli
+//struct Message: Codable {
+//    var id: String
+//    var sender: SenderType
+//    var content: String
+//    var timestamp: Date
+//    var messageType: MessageType
+//}
+
+//enum SenderType: String, Codable { case user, ai}
+
+//enum MessageType: String, Codable {case text, image, multipleChoice, other}
 
 
 //MARK: - GPT ning takliflari

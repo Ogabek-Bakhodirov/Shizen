@@ -36,6 +36,7 @@ class PomodoroViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupUI()
         startTimer()
+        print(UserModel.shared.printAll())
     }
     
     private func setupUI() {

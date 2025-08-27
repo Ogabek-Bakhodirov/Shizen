@@ -33,11 +33,13 @@ class OverviewViewController: UIViewControllerExtensions {
         let view = ActivityCalendarView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
+        let history = UserModel.shared.focusSession[0].tractionHistory
         // Configure data
         view.month = Date() // current month
+        view.applyTractionHistory(history)
 //        view.squareSize = 18
 //        view.spacing = 6
-        view.activeDays = [1,2,3,5,6,8,9,10,14,15,18,21,22,25,28,30]
+//        view.activeDays = [1,2,3,5,6,8,9,10,14,15,18,21,22,25,28,30]
         return view
     }()
     
@@ -54,27 +56,6 @@ class OverviewViewController: UIViewControllerExtensions {
         return view
     }()
     
-    func askForPermissionFamilyControl(){
-        
-        Task {
-            let status = AuthorizationCenter.shared.authorizationStatus
-            switch status {
-                case .notDetermined:
-                    do {
-                        try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
-                        print("Permission requested")
-                    } catch {
-                        print("Error requesting permission: \(error.localizedDescription)")
-                    }
-                case .denied:
-                    print("Permission denied previously")
-                case .approved:
-                    print("Permission already granted")
-                @unknown default:
-                    print("Unknown authorization status")
-            }
-        }
-    }
     
     func askForPermissionNotifications() {
         let notificationCenter = UNUserNotificationCenter.current ()
@@ -136,7 +117,6 @@ class OverviewViewController: UIViewControllerExtensions {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         askForPermissionNotifications()
-        askForPermissionFamilyControl()
     }
     
     @objc func onClickSettings(){
