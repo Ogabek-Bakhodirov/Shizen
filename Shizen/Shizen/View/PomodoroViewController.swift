@@ -8,6 +8,10 @@ import UIKit
 
 class PomodoroViewController: UIViewController {
     
+    var onFinish: (() -> Void)?
+    
+    let today = Calendar.current.startOfDay(for: Date())
+    
     private var timer: Timer?
     private var remainingSeconds = 25 * 60  // 25 minutes
     
@@ -66,15 +70,15 @@ class PomodoroViewController: UIViewController {
                                      repeats: true)
     }
     
-    @objc private func updateTimer() {
-        if remainingSeconds > 0 {
-            remainingSeconds -= 1
-            updateTimeLabel()
-        } else {
-            timer?.invalidate()
-            timer = nil
-        }
-    }
+//    @objc private func updateTimer() {
+//        if remainingSeconds > 0 {
+//            remainingSeconds -= 1
+//            updateTimeLabel()
+//        } else {
+//            timer?.invalidate()
+//            timer = nil
+//        }
+//    }
     
     private func updateTimeLabel() {
         let minutes = remainingSeconds / 60
@@ -82,13 +86,37 @@ class PomodoroViewController: UIViewController {
         timeLabel.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
+    @objc private func updateTimer() {
+        if remainingSeconds > 0 {
+            remainingSeconds -= 1
+            updateTimeLabel()
+        } else {
+            timer?.invalidate()
+            timer = nil
+            
+            // Timer finished, update dailyScore
+            UserModel.shared.focusSession[0].dailyScore += 1
+            UserModel.shared.focusSession[0].tractionHistory[today] = 1
+            
+            // Dismiss the view controller after a short delay so user sees 00:00
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.onFinish?()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
     @objc private func stopButtonTapped() {
         let alert = UIAlertController(title: "Stop Timer?",
                                       message: "Are you really want to stop it?",
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            UserModel.shared.focusSession[0].dailyScore -= 1
+            UserModel.shared.focusSession[0].tractionHistory[self.today] = -1
+        }))
         alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { _ in
             self.timer?.invalidate()
+            self.onFinish?()
             self.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true)

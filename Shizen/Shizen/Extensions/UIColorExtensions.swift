@@ -16,6 +16,11 @@ extension UIColor {
     public static var colorBlue = makeCustomColor(52, 119, 248)
     public static var lightTextColor = getColor(from: "#808080")
     public static var secondLightTextColor = getColor(from: "#57636C")
+    public static var ultraActiveColor = getColor(from: "#063b00")
+    public static var maxActiveColor = getColor(from: "#0a5d00")
+    public static var proActiveColor = getColor(from: "#089000")
+    public static var activeColor = getColor(from: "#1fc600")
+    
 
     
     public static func makeCustomColor(_ r: CGFloat,_ g: CGFloat,_ b:CGFloat,_ a: CGFloat = 1.0) -> UIColor{

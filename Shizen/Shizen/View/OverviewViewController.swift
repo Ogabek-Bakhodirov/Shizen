@@ -35,8 +35,8 @@ class OverviewViewController: UIViewControllerExtensions {
         view.backgroundColor = .clear
         let history = UserModel.shared.focusSession[0].tractionHistory
         // Configure data
-        view.month = Date() // current month
-        view.applyTractionHistory(history)
+//        view.month = Date() // current month
+//        view.tractionHistory = (history)
 //        view.squareSize = 18
 //        view.spacing = 6
 //        view.activeDays = [1,2,3,5,6,8,9,10,14,15,18,21,22,25,28,30]
@@ -145,7 +145,13 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
                     if self.isInternetAvailable() {
                         self.showPopup(on: self, title: "Telefoningiz Internetga ulangan.", message: "Focus rejimi ishlashi uchun iltimos qurulmani WiFi va interdan uzing.")
                     } else {
-                        self.openViewController(viewController: PomodoroViewController())
+                        let pomodoroVC = PomodoroViewController()
+                        pomodoroVC.onFinish = { [weak self] in
+                            // reload calendar here
+                            self?.monthView.applyTractionHistory(UserModel.shared.focusSession[0].tractionHistory)
+                            self?.monthView.collection.reloadData()
+                        }
+                        self.openViewController(viewController: pomodoroVC)
                     }
                 }
             }

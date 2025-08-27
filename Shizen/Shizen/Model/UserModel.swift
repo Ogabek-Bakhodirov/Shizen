@@ -29,7 +29,16 @@ class UserModel: Codable {
                                                                       gender: .notSelected,
                                                                       country: "",
                                                                       preferences: [],
-                                                                      focusSession: [FocusSession(id: UUID(), title: "Kunlik fokus rejimi", dailyScore: 0, totalScore: 0, tractionHistory: [Date():0])])
+                                                                      focusSession: [FocusSession(id: UUID(), title: "Kunlik fokus rejimi", dailyScore: 0,
+tractionHistory: [Calendar.current.date(byAdding: .day, value: -1, to: Date())!:1,Date():0,
+                  Calendar.current.date(byAdding: .day, value: -3, to: Date())!:4,
+                  Calendar.current.date(byAdding: .day, value: -4, to: Date())!:3,
+                  Calendar.current.date(byAdding: .day, value: -5, to: Date())!:6,
+                  Calendar.current.date(byAdding: .day, value: -6, to: Date())!:7,
+                  Calendar.current.date(byAdding: .day, value: -9, to: Date())!:8,
+                  Calendar.current.date(byAdding: .day, value: -11, to: Date())!:10,
+                  Calendar.current.date(byAdding: .day, value: -13, to: Date())!:0,
+                  Calendar.current.date(byAdding: .day, value: +13, to: Date())!:10])])
 
     private var userId: String
     private var name: String { didSet { saveToUserDefaults() } }
@@ -142,7 +151,7 @@ extension UserModel {
                 
                 if lastDay < today {
                     if session.dailyScore > 0 {
-                        focusSession[i].totalScore += session.dailyScore
+//                        focusSession[i].totalScore += session.dailyScore
                         focusSession[i].tractionHistory[today] = session.dailyScore
                     } else {
                         focusSession[i].tractionHistory[today] = 0
