@@ -111,8 +111,7 @@ class PomodoroViewController: UIViewController {
                                       message: "Are you really want to stop it?",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            UserModel.shared.focusSession[0].dailyScore -= 1
-            UserModel.shared.focusSession[0].tractionHistory[self.today] = -1
+            
         }))
         alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { _ in
             self.timer?.invalidate()

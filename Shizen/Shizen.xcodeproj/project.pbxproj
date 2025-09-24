@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		800177ED2E83E7CB009286DF /* habit_tracker_ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */; };
+		800177F02E83EDCD009286DF /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EF2E83EDCA009286DF /* BadgeCell.swift */; };
+		800177F22E83EDE5009286DF /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177F12E83EDDA009286DF /* ActivityCell.swift */; };
 		804AB75D2D49951400C32B1A /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB75C2D49950E00C32B1A /* UILabelExtensions.swift */; };
 		804AB75F2D4A718700C32B1A /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB75E2D4A718300C32B1A /* Tasks.swift */; };
 		804AB7642D4B6DA800C32B1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7632D4B6DA100C32B1A /* RegistrationViewController.swift */; };
@@ -70,6 +73,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habit_tracker_ui.swift; sourceTree = "<group>"; };
+		800177EF2E83EDCA009286DF /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
+		800177F12E83EDDA009286DF /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		804AB75C2D49950E00C32B1A /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		804AB75E2D4A718300C32B1A /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		804AB7632D4B6DA100C32B1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 		80DBD66C2CF7ADE900F988A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */,
 				80FF98ED2E5D17DD00B4087D /* PomodoroViewController.swift */,
 				80BB31F82D831A5D005EFB07 /* NotReadyScreenViewController.swift */,
 				80BB31F62D80A5E6005EFB07 /* HelpViewController.swift */,
@@ -241,6 +248,8 @@
 		80DBD6812CF9F65100F988A7 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				800177F12E83EDDA009286DF /* ActivityCell.swift */,
+				800177EF2E83EDCA009286DF /* BadgeCell.swift */,
 				804AB7B42D7C7E3A00C32B1A /* LeaderBoardTableViewCell.swift */,
 				804AB7A82D7B951F00C32B1A /* MyAwardsCollectionViewCell.swift */,
 				804AB7792D51384600C32B1A /* ProfileViewCell.swift */,
@@ -336,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BB31F72D80A5F7005EFB07 /* HelpViewController.swift in Sources */,
+				800177F02E83EDCD009286DF /* BadgeCell.swift in Sources */,
 				804AB7742D50B05000C32B1A /* ForgotPasswordViewController.swift in Sources */,
 				80FF98F02E5D19FF00B4087D /* Network.swift in Sources */,
 				804AB7762D50B08F00C32B1A /* ForgotPasswordView.swift in Sources */,
@@ -352,6 +362,7 @@
 				804AB7A12D6B100900C32B1A /* QuizViewDel.swift in Sources */,
 				80DBD6852CF9FDAE00F988A7 /* SetUpTutorialCell.swift in Sources */,
 				80BB31FB2D84A1AD005EFB07 /* UserSettings.swift in Sources */,
+				800177F22E83EDE5009286DF /* ActivityCell.swift in Sources */,
 				804AB7B72D7DA1E400C32B1A /* EditInfoViewController.swift in Sources */,
 				804AB7A52D79E92E00C32B1A /* UIColorExtensions.swift in Sources */,
 				80DBD68C2CFA7FC900F988A7 /* AIMessageCell.swift in Sources */,
@@ -370,6 +381,7 @@
 				80DBD6902CFB37D100F988A7 /* UserModel.swift in Sources */,
 				804AB77A2D51385600C32B1A /* ProfileViewCell.swift in Sources */,
 				804AB7782D50CC4400C32B1A /* ProfileViewController.swift in Sources */,
+				800177ED2E83E7CB009286DF /* habit_tracker_ui.swift in Sources */,
 				804AB7A72D7B00A600C32B1A /* MyAwardsViewController.swift in Sources */,
 				804AB7AD2D7BA1F900C32B1A /* UIViewControllerExtensions.swift in Sources */,
 				804AB76E2D5017E200C32B1A /* LoginView.swift in Sources */,

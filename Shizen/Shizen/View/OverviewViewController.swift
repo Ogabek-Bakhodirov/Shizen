@@ -154,6 +154,14 @@ extension OverviewViewController: UITableViewDelegate, UITableViewDataSource{
                         self.openViewController(viewController: pomodoroVC)
                     }
                 }
+                
+//                let pomodoroVC = PomodoroViewController()
+//                pomodoroVC.onFinish = { [weak self] in
+//// reload calendar here
+//                    self?.monthView.applyTractionHistory(UserModel.shared.focusSession[0].tractionHistory)
+//                    self?.monthView.collection.reloadData()
+//                }
+//                self?.openViewController(viewController: pomodoroVC)
             }
             
             cell.awardsRowClouser = { [weak self] in

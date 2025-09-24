@@ -238,64 +238,6 @@
             endingLineNumber = "99"
             landmarkName = "updateTimer()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C57C91EF-15B3-4357-878D-D070FDC2F82B - 7dfdf77a54b6846"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99">
-               </Location>
-               <Location
-                  uuid = "C57C91EF-15B3-4357-878D-D070FDC2F82B - 440267fbfe0653f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100">
-               </Location>
-               <Location
-                  uuid = "C57C91EF-15B3-4357-878D-D070FDC2F82B - 7dfdf77a54b6818"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101">
-               </Location>
-               <Location
-                  uuid = "C57C91EF-15B3-4357-878D-D070FDC2F82B - 440267fbfe065388"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -312,50 +254,6 @@
             endingLineNumber = "98"
             landmarkName = "updateTimer()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "53961206-F016-44FB-9362-95DE42FB9D12 - 7dfdf77a54b6867"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98">
-               </Location>
-               <Location
-                  uuid = "53961206-F016-44FB-9362-95DE42FB9D12 - 440267fbfe06534a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97">
-               </Location>
-               <Location
-                  uuid = "53961206-F016-44FB-9362-95DE42FB9D12 - 440267fbfe0653a9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Shizen.PomodoroViewController.updateTimer() -&gt; ()"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/PomodoroViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -372,36 +270,6 @@
             endingLineNumber = "151"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7853D72E-3BB2-47BD-AA61-741E9560A0E7 - 8477bc2982098ab7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Shizen.OverviewViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/OverviewViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151">
-               </Location>
-               <Location
-                  uuid = "7853D72E-3BB2-47BD-AA61-741E9560A0E7 - b8d682dfc0f9b221"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in Shizen.OverviewViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Shizen.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ogabekbakhodirov/Desktop/Shizen/Shizen/Shizen/Shizen/View/OverviewViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

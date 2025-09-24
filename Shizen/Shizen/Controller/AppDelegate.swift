@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UserModel.shared.checkAndUpdateDailySessions()
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = OverviewViewController()
+        window?.rootViewController = ProfileViewControllerr()
         return true
     }
 }

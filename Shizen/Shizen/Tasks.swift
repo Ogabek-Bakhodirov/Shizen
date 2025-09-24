@@ -72,3 +72,7 @@
 //      }
 //    }
 //}
+
+
+
+//Prosta kirib chiqqanda kalendarda qizil bolishi 
