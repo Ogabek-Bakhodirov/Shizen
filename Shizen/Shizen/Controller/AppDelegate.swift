@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UserModel.shared.checkAndUpdateDailySessions()
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = CreateProfileViewController()
+        window?.rootViewController = CreateChallengeViewController()
         return true
     }
 }
