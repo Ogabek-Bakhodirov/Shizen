@@ -10,6 +10,7 @@
 		800177ED2E83E7CB009286DF /* habit_tracker_ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */; };
 		800177F02E83EDCD009286DF /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EF2E83EDCA009286DF /* BadgeCell.swift */; };
 		800177F22E83EDE5009286DF /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177F12E83EDDA009286DF /* ActivityCell.swift */; };
+		800177F52E849843009286DF /* LogintoShizenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177F42E849837009286DF /* LogintoShizenViewController.swift */; };
 		804AB75D2D49951400C32B1A /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB75C2D49950E00C32B1A /* UILabelExtensions.swift */; };
 		804AB75F2D4A718700C32B1A /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB75E2D4A718300C32B1A /* Tasks.swift */; };
 		804AB7642D4B6DA800C32B1A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7632D4B6DA100C32B1A /* RegistrationViewController.swift */; };
@@ -33,6 +34,7 @@
 		804AB7B32D7C772600C32B1A /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B22D7C771F00C32B1A /* LeaderBoardViewController.swift */; };
 		804AB7B52D7C7E4400C32B1A /* LeaderBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B42D7C7E3A00C32B1A /* LeaderBoardTableViewCell.swift */; };
 		804AB7B72D7DA1E400C32B1A /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AB7B62D7DA1D700C32B1A /* EditInfoViewController.swift */; };
+		806605A72E854235002E0E5A /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806605A62E854222002E0E5A /* CreateProfileViewController.swift */; };
 		807A31CA2D46DB6C0027EDD0 /* Shieldview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807A31C92D46DB680027EDD0 /* Shieldview.swift */; };
 		80A357DC2E5D9E8B00C97453 /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A357DB2E5D9E6A00C97453 /* FocusSession.swift */; };
 		80A4D5732E5D0AD5001B79B1 /* ActivityDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A4D5722E5D0AC9001B79B1 /* ActivityDayView.swift */; };
@@ -76,6 +78,7 @@
 		800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habit_tracker_ui.swift; sourceTree = "<group>"; };
 		800177EF2E83EDCA009286DF /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		800177F12E83EDDA009286DF /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		800177F42E849837009286DF /* LogintoShizenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogintoShizenViewController.swift; sourceTree = "<group>"; };
 		804AB75C2D49950E00C32B1A /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		804AB75E2D4A718300C32B1A /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		804AB7632D4B6DA100C32B1A /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		804AB7B22D7C771F00C32B1A /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		804AB7B42D7C7E3A00C32B1A /* LeaderBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewCell.swift; sourceTree = "<group>"; };
 		804AB7B62D7DA1D700C32B1A /* EditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
+		806605A62E854222002E0E5A /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		807A31C92D46DB680027EDD0 /* Shieldview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shieldview.swift; sourceTree = "<group>"; };
 		80A357DB2E5D9E6A00C97453 /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSession.swift; sourceTree = "<group>"; };
 		80A4D5712E5D057C001B79B1 /* Shizen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shizen.entitlements; sourceTree = "<group>"; };
@@ -139,6 +143,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		800177F32E849752009286DF /* NewViews */ = {
+			isa = PBXGroup;
+			children = (
+				806605A62E854222002E0E5A /* CreateProfileViewController.swift */,
+				800177F42E849837009286DF /* LogintoShizenViewController.swift */,
+				800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */,
+			);
+			path = NewViews;
+			sourceTree = "<group>";
+		};
 		804AB75B2D4994FA00C32B1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +188,7 @@
 				80A4D5712E5D057C001B79B1 /* Shizen.entitlements */,
 				804AB75B2D4994FA00C32B1A /* Extensions */,
 				80DBD66D2CF7ADFC00F988A7 /* Model */,
+				800177F32E849752009286DF /* NewViews */,
 				80DBD66C2CF7ADE900F988A7 /* View */,
 				80DBD66B2CF7ADDE00F988A7 /* Controller */,
 				80DBD65D2CF78DA700F988A7 /* Assets.xcassets */,
@@ -206,7 +221,6 @@
 		80DBD66C2CF7ADE900F988A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */,
 				80FF98ED2E5D17DD00B4087D /* PomodoroViewController.swift */,
 				80BB31F82D831A5D005EFB07 /* NotReadyScreenViewController.swift */,
 				80BB31F62D80A5E6005EFB07 /* HelpViewController.swift */,
@@ -358,6 +372,7 @@
 				80DBD68A2CFA7FB900F988A7 /* UserMessageCell.swift in Sources */,
 				80FF98EE2E5D17E200B4087D /* PomodoroViewController.swift in Sources */,
 				804AB77C2D51430100C32B1A /* TabbarViewController.swift in Sources */,
+				800177F52E849843009286DF /* LogintoShizenViewController.swift in Sources */,
 				80BB31F92D831A68005EFB07 /* NotReadyScreenViewController.swift in Sources */,
 				804AB7A12D6B100900C32B1A /* QuizViewDel.swift in Sources */,
 				80DBD6852CF9FDAE00F988A7 /* SetUpTutorialCell.swift in Sources */,
@@ -371,6 +386,7 @@
 				80DBD6732CF8877D00F988A7 /* ChatView.swift in Sources */,
 				80FF98F22E5D2D4E00B4087D /* GlobalVariable.swift in Sources */,
 				804AB7A32D79E4AC00C32B1A /* UIImageExtensions.swift in Sources */,
+				806605A72E854235002E0E5A /* CreateProfileViewController.swift in Sources */,
 				80A4D5732E5D0AD5001B79B1 /* ActivityDayView.swift in Sources */,
 				804AB7AB2D7BA06900C32B1A /* AwardDescriptionViewController.swift in Sources */,
 				80BB32012D861B69005EFB07 /* AwardManager.swift in Sources */,
