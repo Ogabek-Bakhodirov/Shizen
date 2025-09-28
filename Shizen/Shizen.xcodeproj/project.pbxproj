@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		800177ED2E83E7CB009286DF /* habit_tracker_ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */; };
+		800177ED2E83E7CB009286DF /* ProfileViewControllerr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EC2E83E7CA009286DF /* ProfileViewControllerr.swift */; };
 		800177F02E83EDCD009286DF /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177EF2E83EDCA009286DF /* BadgeCell.swift */; };
 		800177F22E83EDE5009286DF /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177F12E83EDDA009286DF /* ActivityCell.swift */; };
 		800177F52E849843009286DF /* LogintoShizenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800177F42E849837009286DF /* LogintoShizenViewController.swift */; };
@@ -78,7 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habit_tracker_ui.swift; sourceTree = "<group>"; };
+		800177EC2E83E7CA009286DF /* ProfileViewControllerr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerr.swift; sourceTree = "<group>"; };
 		800177EF2E83EDCA009286DF /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		800177F12E83EDDA009286DF /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		800177F42E849837009286DF /* LogintoShizenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogintoShizenViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				80EFE2042E8551DE00852EAC /* CreateChallangeViewController.swift */,
 				806605A62E854222002E0E5A /* CreateProfileViewController.swift */,
 				800177F42E849837009286DF /* LogintoShizenViewController.swift */,
-				800177EC2E83E7CA009286DF /* habit_tracker_ui.swift */,
+				800177EC2E83E7CA009286DF /* ProfileViewControllerr.swift */,
 			);
 			path = NewViews;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 				80DBD6902CFB37D100F988A7 /* UserModel.swift in Sources */,
 				804AB77A2D51385600C32B1A /* ProfileViewCell.swift in Sources */,
 				804AB7782D50CC4400C32B1A /* ProfileViewController.swift in Sources */,
-				800177ED2E83E7CB009286DF /* habit_tracker_ui.swift in Sources */,
+				800177ED2E83E7CB009286DF /* ProfileViewControllerr.swift in Sources */,
 				804AB7A72D7B00A600C32B1A /* MyAwardsViewController.swift in Sources */,
 				804AB7AD2D7BA1F900C32B1A /* UIViewControllerExtensions.swift in Sources */,
 				804AB76E2D5017E200C32B1A /* LoginView.swift in Sources */,

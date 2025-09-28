@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateChallengeViewController: UIViewController {
+class CreateChallengeViewController: UIViewControllerExtensions {
     
     // MARK: - UI Components
     private let scrollView: UIScrollView = {

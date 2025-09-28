@@ -3,7 +3,7 @@
 
 import UIKit
 
-class ProfileViewControllerr: UIViewController, UICollectionViewDataSource, UITableViewDataSource {
+class ProfileViewControllerr: UIViewControllerExtensions, UICollectionViewDataSource, UITableViewDataSource {
     
     // Mock Data
     private let badgesData = [
