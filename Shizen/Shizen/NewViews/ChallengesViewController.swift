@@ -50,18 +50,9 @@ enum ChallengeStatus {
 class ChallengesViewController: UIViewController {
     
     // MARK: - UI Components
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.showsVerticalScrollIndicator = false
-        return scrollView
-    }()
-    
-    private let contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    // Removed scroll view components - using table view now
+    // private let scrollView: UIScrollView = { ... }
+    // private let contentView: UIView = { ... }
     
     // Navigation Header
     private let headerView: UIView = {
@@ -131,15 +122,8 @@ class ChallengesViewController: UIViewController {
         return button
     }()
     
-    // Challenges Stack View
-    private let challengesStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 20
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    // Challenges Stack View (removed - using table view now)
+    // private let challengesStackView: UIStackView = { ... }
     
     // Create Challenge Button (Floating Action Button)
     private let createChallengeButton: UIButton = {
@@ -180,6 +164,16 @@ class ChallengesViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         return view
+    }()
+    
+    // Table Views for both sections
+    private let notJoinedTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     // My Challenges Table View
@@ -238,7 +232,7 @@ class ChallengesViewController: UIViewController {
         setupConstraints()
         setupActions()
         setupNavigationBar()
-        populateChallenges()
+        setupNotJoinedTableView()
         setupMyChallengesTableView()
         loadMyChallengesData()
         setupScrollViewInsets()
@@ -261,21 +255,20 @@ class ChallengesViewController: UIViewController {
     }
     
     private func setupScrollViewInsets() {
-        // Calculate the space needed for the floating action button
-        let fabHeight: CGFloat = 56
-        let fabBottomMargin: CGFloat = 24
-        let additionalPadding: CGFloat = 20
-        let totalBottomInset = fabHeight + fabBottomMargin + additionalPadding
-        
-        // Set content insets to ensure last cell is visible above FAB
-        scrollView.contentInset.bottom = totalBottomInset
-        scrollView.scrollIndicatorInsets.bottom = totalBottomInset
+        // This method is no longer needed since we're using table views
+        // Remove FAB-related bottom insets if needed
     }
     
     private func setupMyChallengesTableView() {
         myChallengesTableView.delegate = self
         myChallengesTableView.dataSource = self
         myChallengesTableView.register(MyChallengeTableViewCell.self, forCellReuseIdentifier: "MyChallengeCell")
+    }
+    
+    private func setupNotJoinedTableView() {
+        notJoinedTableView.delegate = self
+        notJoinedTableView.dataSource = self
+        notJoinedTableView.register(ChallengeTableViewCell.self, forCellReuseIdentifier: "ChallengeCell")
     }
     
     private func loadMyChallengesData() {
@@ -339,9 +332,8 @@ class ChallengesViewController: UIViewController {
         view.addSubview(myChallengesContainerView)
         view.addSubview(createChallengeButton)  // Add to main view for floating effect
         
-        // Setup Not Joined container (original scroll view)
-        notJoinedContainerView.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        // Setup Not Joined container with table view
+        notJoinedContainerView.addSubview(notJoinedTableView)
         
         // Setup My Challenges container
         myChallengesContainerView.addSubview(myChallengesTableView)
@@ -354,7 +346,7 @@ class ChallengesViewController: UIViewController {
         tabToggleContainer.addSubview(notJoinedButton)
         
         // Add challenges to scroll view content (without switcher)
-        contentView.addSubview(challengesStackView)
+        // contentView.addSubview(challengesStackView) - Removed as we're using table view now
         
         // Add separator line below header
         let separatorView = UIView()
@@ -420,30 +412,17 @@ class ChallengesViewController: UIViewController {
             myChallengesContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             myChallengesContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            // Scroll View (inside Not Joined container)
-            scrollView.topAnchor.constraint(equalTo: notJoinedContainerView.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: notJoinedContainerView.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: notJoinedContainerView.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: notJoinedContainerView.bottomAnchor),
+            // Not Joined Table View (inside Not Joined container)
+            notJoinedTableView.topAnchor.constraint(equalTo: notJoinedContainerView.topAnchor),
+            notJoinedTableView.leadingAnchor.constraint(equalTo: notJoinedContainerView.leadingAnchor),
+            notJoinedTableView.trailingAnchor.constraint(equalTo: notJoinedContainerView.trailingAnchor),
+            notJoinedTableView.bottomAnchor.constraint(equalTo: notJoinedContainerView.bottomAnchor),
             
             // My Challenges Table View (inside My Challenges container)
             myChallengesTableView.topAnchor.constraint(equalTo: myChallengesContainerView.topAnchor),
             myChallengesTableView.leadingAnchor.constraint(equalTo: myChallengesContainerView.leadingAnchor),
             myChallengesTableView.trailingAnchor.constraint(equalTo: myChallengesContainerView.trailingAnchor),
             myChallengesTableView.bottomAnchor.constraint(equalTo: myChallengesContainerView.bottomAnchor),
-            
-            // Content View (now without switcher)
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            // Challenges Stack View (content starts immediately)
-            challengesStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24),
-            challengesStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            challengesStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            challengesStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
             // Floating Action Button (FAB) - Fixed position bottom-right
             createChallengeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
@@ -457,171 +436,6 @@ class ChallengesViewController: UIViewController {
         myChallengesButton.addTarget(self, action: #selector(tabButtonTapped(_:)), for: .touchUpInside)
         notJoinedButton.addTarget(self, action: #selector(tabButtonTapped(_:)), for: .touchUpInside)
         createChallengeButton.addTarget(self, action: #selector(createChallengeTapped), for: .touchUpInside)
-    }
-    
-    private func populateChallenges() {
-        // Clear existing challenges
-        challengesStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
-        // Add challenge cards
-        for challenge in challenges {
-            let challengeCard = createChallengeCard(for: challenge)
-            challengesStackView.addArrangedSubview(challengeCard)
-        }
-    }
-    
-    private func createChallengeCard(for challenge: Challenge) -> UIView {
-        let cardView = UIView()
-        cardView.backgroundColor = .white
-        cardView.layer.cornerRadius = 16
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.05
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cardView.layer.shadowRadius = 8
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Emoji Label
-        let emojiLabel = UILabel()
-        emojiLabel.text = challenge.emoji
-        emojiLabel.font = UIFont.systemFont(ofSize: 24)
-        emojiLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Title Label
-        let titleLabel = UILabel()
-        titleLabel.text = challenge.title
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        titleLabel.textColor = .black
-        titleLabel.numberOfLines = 0
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Description Label
-        let descriptionLabel = UILabel()
-        descriptionLabel.text = challenge.description
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
-        descriptionLabel.textColor = .systemGray
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Price Label (if paid)
-        let priceLabel = UILabel()
-        if challenge.isFree {
-            priceLabel.text = "Free"
-            priceLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-            priceLabel.textColor = .white
-        } else {
-            priceLabel.text = "Paid - \(challenge.price!)"
-            priceLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-            priceLabel.textColor = .white
-        }
-        priceLabel.textAlignment = .center
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Participants Container
-        let participantsContainer = UIView()
-        participantsContainer.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Participants Emoji
-        let participantsEmojiLabel = UILabel()
-        participantsEmojiLabel.text = "👥"
-        participantsEmojiLabel.font = UIFont.systemFont(ofSize: 14)
-        participantsEmojiLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Participants Label
-        let participantsLabel = UILabel()
-        participantsLabel.text = challenge.participants
-        participantsLabel.font = UIFont.systemFont(ofSize: 12)
-        participantsLabel.textColor = .systemGray
-        participantsLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Join Button
-        let joinButton = UIButton(type: .system)
-        joinButton.setTitle("Join", for: .normal)
-        joinButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        joinButton.setTitleColor(.white, for: .normal)
-        joinButton.backgroundColor = UIColor.systemGreen
-        joinButton.layer.cornerRadius = 20
-        joinButton.translatesAutoresizingMaskIntoConstraints = false
-        joinButton.addTarget(self, action: #selector(joinChallengeTapped(_:)), for: .touchUpInside)
-        
-        // Add subviews
-        cardView.addSubview(emojiLabel)
-        cardView.addSubview(titleLabel)
-        cardView.addSubview(descriptionLabel)
-        cardView.addSubview(participantsContainer)
-        cardView.addSubview(priceLabel)
-        cardView.addSubview(joinButton)
-        
-        // Add participants components to container
-        participantsContainer.addSubview(participantsEmojiLabel)
-        participantsContainer.addSubview(participantsLabel)
-        
-        // Add padding to price label by using a container
-        let priceLabelContainer = UIView()
-        if challenge.isFree {
-            priceLabelContainer.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.8)
-        } else {
-            priceLabelContainer.backgroundColor = UIColor.systemOrange
-        }
-        priceLabelContainer.layer.cornerRadius = 14
-        priceLabelContainer.clipsToBounds = true
-        priceLabelContainer.translatesAutoresizingMaskIntoConstraints = false
-        
-        cardView.addSubview(priceLabelContainer)
-        priceLabelContainer.addSubview(priceLabel)
-        
-        // Setup constraints
-        NSLayoutConstraint.activate([
-            // Card height
-            cardView.heightAnchor.constraint(greaterThanOrEqualToConstant: 160),
-            
-            // Emoji
-            emojiLabel.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 20),
-            emojiLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
-            
-            // Title
-            titleLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
-            
-            // Description
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
-            
-            // Participants Container
-            participantsContainer.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 12),
-            participantsContainer.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
-            participantsContainer.heightAnchor.constraint(equalToConstant: 20),
-            
-            // Participants Emoji
-            participantsEmojiLabel.leadingAnchor.constraint(equalTo: participantsContainer.leadingAnchor),
-            participantsEmojiLabel.centerYAnchor.constraint(equalTo: participantsContainer.centerYAnchor),
-            
-            // Participants Label
-            participantsLabel.leadingAnchor.constraint(equalTo: participantsEmojiLabel.trailingAnchor, constant: 6),
-            participantsLabel.centerYAnchor.constraint(equalTo: participantsContainer.centerYAnchor),
-            participantsLabel.trailingAnchor.constraint(lessThanOrEqualTo: participantsContainer.trailingAnchor),
-            
-            // Price Label Container
-            priceLabelContainer.topAnchor.constraint(equalTo: participantsContainer.bottomAnchor, constant: 12),
-            priceLabelContainer.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
-            priceLabelContainer.heightAnchor.constraint(equalToConstant: 28),
-            
-            // Price Label (inside container)
-            priceLabel.topAnchor.constraint(equalTo: priceLabelContainer.topAnchor),
-            priceLabel.leadingAnchor.constraint(equalTo: priceLabelContainer.leadingAnchor, constant: 12),
-            priceLabel.trailingAnchor.constraint(equalTo: priceLabelContainer.trailingAnchor, constant: -12),
-            priceLabel.bottomAnchor.constraint(equalTo: priceLabelContainer.bottomAnchor),
-            
-            // Join Button
-            joinButton.centerYAnchor.constraint(equalTo: priceLabelContainer.centerYAnchor),
-            joinButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
-            joinButton.heightAnchor.constraint(equalToConstant: 40),
-            joinButton.widthAnchor.constraint(equalToConstant: 70),
-            joinButton.bottomAnchor.constraint(greaterThanOrEqualTo: cardView.bottomAnchor, constant: -20)
-        ])
-        
-        return cardView
     }
     
     // MARK: - Actions
@@ -668,6 +482,20 @@ class ChallengesViewController: UIViewController {
         // Navigate to create challenge screen
     }
     
+    @objc private func challengeCardTapped(_ sender: UITapGestureRecognizer) {
+        guard let cardView = sender.view,
+              cardView.tag < challenges.count else { return }
+        
+        let selectedChallenge = challenges[cardView.tag]
+        
+        // Navigate to ChallangeInfoViewController
+        let challengeInfoVC = ChallangeInfoViewController()
+        // You can pass the challenge data to the view controller here if needed
+        // challengeInfoVC.challenge = selectedChallenge
+        
+        navigationController?.pushViewController(challengeInfoVC, animated: true)
+    }
+    
     // MARK: - Helper Methods
     private func updateTabButtonsAppearance() {
         let buttons = [myChallengesButton, notJoinedButton]
@@ -691,44 +519,58 @@ class ChallengesViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
-extension ChallengesViewController: UITableViewDataSource {
+// MARK: - UITableViewDataSource and Delegate
+extension ChallengesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 // Public and Private sections
+        if tableView == myChallengesTableView {
+            return 2 // Public and Private sections for My Challenges
+        } else {
+            return 1 // Single section for Not Joined challenges
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? publicChallenges.count : privateChallenges.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Public" : "Private"
+        if tableView == myChallengesTableView {
+            return section == 0 ? publicChallenges.count : privateChallenges.count
+        } else {
+            return challenges.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyChallengeCell", for: indexPath) as? MyChallengeTableViewCell else {
-            return UITableViewCell()
+        if tableView == myChallengesTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyChallengeCell", for: indexPath) as! MyChallengeTableViewCell
+            let challenge = indexPath.section == 0 ? publicChallenges[indexPath.row] : privateChallenges[indexPath.row]
+            cell.configure(with: challenge)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengeCell", for: indexPath) as! ChallengeTableViewCell
+            let challenge = challenges[indexPath.row]
+            cell.configure(with: challenge)
+            return cell
         }
-        
-        let challenge = indexPath.section == 0 ? publicChallenges[indexPath.row] : privateChallenges[indexPath.row]
-        cell.configure(with: challenge)
-        return cell
     }
-}
-
-// MARK: - UITableViewDelegate
-extension ChallengesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if tableView == myChallengesTableView {
+            return 80
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView == myChallengesTableView ? 80 : 180
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return tableView == myChallengesTableView ? 40 : 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard tableView == myChallengesTableView else { return nil }
+        
         let headerView = UIView()
         headerView.backgroundColor = .systemBackground
         
@@ -751,9 +593,17 @@ extension ChallengesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let challenge = indexPath.section == 0 ? publicChallenges[indexPath.row] : privateChallenges[indexPath.row]
-        print("Selected challenge: \(challenge.title)")
-        // Handle challenge selection here
+        if tableView == myChallengesTableView {
+            let challenge = indexPath.section == 0 ? publicChallenges[indexPath.row] : privateChallenges[indexPath.row]
+            print("Selected my challenge: \(challenge.title)")
+            // Handle my challenge selection here
+        } else {
+            let challenge = challenges[indexPath.row]
+            print("Selected not joined challenge: \(challenge.title)")
+            // Navigate to ChallangeInfoViewController
+            let challengeInfoVC = ChallangeInfoViewController()
+            navigationController?.pushViewController(challengeInfoVC, animated: true)
+        }
     }
 }
 

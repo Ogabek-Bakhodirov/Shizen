@@ -44,6 +44,7 @@
 		80BB31FD2D84D7EC005EFB07 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB31FC2D84D7D7005EFB07 /* NotificationCenter.swift */; };
 		80BB32012D861B69005EFB07 /* AwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB32002D861B65005EFB07 /* AwardManager.swift */; };
 		80BB32032D86AEC9005EFB07 /* AwardBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB32022D86AEC5005EFB07 /* AwardBase.swift */; };
+		80DA0D0A2E89C56B001CE66D /* ChallangeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DA0D092E89C563001CE66D /* ChallangeInfoViewController.swift */; };
 		80DBD6552CF78DA600F988A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6542CF78DA600F988A7 /* AppDelegate.swift */; };
 		80DBD6592CF78DA600F988A7 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DBD6582CF78DA600F988A7 /* OverviewViewController.swift */; };
 		80DBD65E2CF78DA700F988A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80DBD65D2CF78DA700F988A7 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		80BB31FC2D84D7D7005EFB07 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		80BB32002D861B65005EFB07 /* AwardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardManager.swift; sourceTree = "<group>"; };
 		80BB32022D86AEC5005EFB07 /* AwardBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardBase.swift; sourceTree = "<group>"; };
+		80DA0D092E89C563001CE66D /* ChallangeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallangeInfoViewController.swift; sourceTree = "<group>"; };
 		80DBD6512CF78DA600F988A7 /* Shizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shizen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80DBD6542CF78DA600F988A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80DBD6582CF78DA600F988A7 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		800177F32E849752009286DF /* NewViews */ = {
 			isa = PBXGroup;
 			children = (
+				80DA0D092E89C563001CE66D /* ChallangeInfoViewController.swift */,
 				80EFE2062E85714900852EAC /* ChallengesViewController.swift */,
 				80EFE2042E8551DE00852EAC /* CreateChallangeViewController.swift */,
 				806605A62E854222002E0E5A /* CreateProfileViewController.swift */,
@@ -387,6 +390,7 @@
 				804AB7B72D7DA1E400C32B1A /* EditInfoViewController.swift in Sources */,
 				804AB7A52D79E92E00C32B1A /* UIColorExtensions.swift in Sources */,
 				80DBD68C2CFA7FC900F988A7 /* AIMessageCell.swift in Sources */,
+				80DA0D0A2E89C56B001CE66D /* ChallangeInfoViewController.swift in Sources */,
 				804AB7B52D7C7E4400C32B1A /* LeaderBoardTableViewCell.swift in Sources */,
 				804AB7642D4B6DA800C32B1A /* RegistrationViewController.swift in Sources */,
 				80DBD6732CF8877D00F988A7 /* ChatView.swift in Sources */,
